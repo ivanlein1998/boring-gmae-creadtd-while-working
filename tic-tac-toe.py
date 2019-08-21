@@ -6,13 +6,6 @@ def display(sample):
             print(sample[i][j], end=' ')
         print('\n')
 
-def DrawCheck(board):
-    for a in range (3):
-        for b in range(3):
-            if board[a][b] == '*':
-                return False
-    print("Draw")
-    return True
 def x_action(target,a,b):
     if (target[a][b] == '*'):
         target[a][b] = 'X'
@@ -51,17 +44,31 @@ def checkRow(a):
         print ("Selected Row " + str(a))
         return a
 
-def x_check(target):
+def x_endCheck(target):
     for i in range (3):
         if(target[i][0] == target[i][1] == target[i][2] == 'X' or target[0][i] == target[1][i] == target[2][i] == 'X' or target[0][0] == target[1][1] == target[2][2] == 'X'):
             print ("X win!")
             quit()
+        else:
+            for a in range (3):
+                for b in range(3):
+                    if board[a][b] == '*':
+                        return False
+    print("Draw!")
+    quit()
 
-def y_check(target):
+def y_endCheck(target):
     for i in range (3):
         if(target[i][0] == target[i][1] == target[i][2] == 'Y' or target[0][i] == target[1][i] == target[2][i] == 'Y' or target[0][0] == target[1][1] == target[2][2] == 'Y'):
             print ("Y win!")
             quit()
+        else:
+            for a in range (3):
+                for b in range(3):
+                    if board[a][b] == '*':
+                        return False
+    print("Draw!")
+    quit()
 
 display(board)
 while True:    
@@ -72,8 +79,7 @@ while True:
     x_action(board,val_col,val_row)
     print ('\n')
     display(board)
-    x_check(board)
-    DrawCheck(board)
+    x_endCheck(board)
     val_col = int(input("Column: "))
     val_col = checkCol(val_col)
     val_row = int(input("Row: "))
@@ -81,5 +87,4 @@ while True:
     y_action(board,val_col,val_row)
     print ('\n')
     display(board)
-    y_check(board)
-    DrawCheck(board)
+    y_endCheck(board)
