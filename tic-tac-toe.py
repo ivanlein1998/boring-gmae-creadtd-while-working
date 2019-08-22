@@ -13,9 +13,11 @@ def x_action(target,a,b):
         print ("Sorry, the location has been choosen! Choose again")
         cor_col = input("Column: ")
         val_cor_col = int (cor_col)
+        val_cor_col = checkCol(val_cor_col)
         cor_row = input("Row: ")
         val_cor_row = int(cor_row)
-        x_action(target,val_cor_col,val_cor_row)
+        val_cor_row = checkRow(val_cor_row)
+        x_action(target,val_cor_row,val_cor_col)
 
 def y_action(target,a,b):
     if (target[a][b] == '*'):
@@ -24,9 +26,11 @@ def y_action(target,a,b):
         print ("Sorry, the location has been choosen! Choose again")
         cor_col = input("Column: ")
         val_cor_col = int (cor_col)
+        val_cor_col = checkCol(val_cor_col)
         cor_row = input("Row: ")
         val_cor_row = int(cor_row)
-        y_action(target,val_cor_col,val_cor_row)
+        val_cor_row = checkRow(val_cor_row)
+        y_action(target,val_cor_row,val_cor_col)
 
 def checkCol(a):
     if a<0 or a>2:
@@ -76,7 +80,7 @@ while True:
     val_col = checkCol(val_col)
     val_row = int(input("Row: "))
     val_row = checkRow(val_row)
-    x_action(board,val_col,val_row)
+    x_action(board,val_row,val_col)
     print ('\n')
     display(board)
     x_endCheck(board)
@@ -84,7 +88,7 @@ while True:
     val_col = checkCol(val_col)
     val_row = int(input("Row: "))
     val_row = checkRow(val_row)
-    y_action(board,val_col,val_row)
+    y_action(board,val_row,val_col)
     print ('\n')
     display(board)
     y_endCheck(board)
