@@ -1,0 +1,27 @@
+#Game of snake and snack
+import random
+class snake:
+    length = 1
+    x_location = [4]
+    y_location = [6]
+board = [['*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*', '*', '*'], ['*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*', '*', '*'], ['*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*', '*', '*', '*'],['*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*', '*', '*'],['*', '*', '*', '*', '*' ,'*', '*','*', '*', '*', '*', '*', '*'],['*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*', '*', '*'],['*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*', '*', '*']]
+boardList = [[0,1,2,3,4,5,6,7,8,9,10,11,12],[0,1,2,3,4,5,6,7,8,9,10,11,12],[0,1,2,3,4,5,6,7,8,9,10,11,12],[0,1,2,3,4,5,6,7,8,9,10,11,12], [0,1,2,3,4,5,6,7,8,9,10,11,12],[0,1,2,3,4,5,6,7,8,9,10,11,12],[0,1,2,3,4,5,6,7,8,9,10,11,12]]
+def eat(snake):
+    snake.length +1
+def generate_snack(board):
+    a , b = random.choice(boardList)
+    if board[a][b] == '*':
+        del boardList[a][b]
+        return a , b
+    else:
+        generate_snack(board)
+def display(sample,snake):
+    for i in range(7):
+        for j in range(13):
+            if i == snake.x_location and j == snake.y_location:
+                print ('o')
+            else:
+                print(sample[i][j] , end=' ')
+        print('\n')
+hunter = snake()
+display(board,hunter)
