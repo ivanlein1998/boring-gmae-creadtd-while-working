@@ -5,16 +5,26 @@ def HeadOrToss():
         print ("The coin is Heads Up")
     elif randomInt==2:
         print ("The coin is Tosses Up")
-def throw():
-    HeadOrToss()
+def throwAgain():
     again = input("Try Again? (Y/N) \n")
     if again == 'Y' or again =='y':
-        throw()
-    else:
+        HeadOrToss()
+        throwAgain()
+    elif again == 'N' or again =='n':
         exit()
+    else:
+        print ("Please enter a correct command!")
+        throwAgain()
 
-answer = input("Do you want to toss a coin? (Y/N) \n")
-if answer == 'Y' or answer =='y':
-    throw()
-else:
-    exit()
+def init():
+    answer = input("Do you want to toss a coin? (Y/N) \n")
+    if answer == 'Y' or answer =='y':
+        HeadOrToss()
+        throwAgain()
+    elif answer == 'N' or answer =='n':
+        exit()
+    else:
+        print ("Please enter a correct command!")
+        init()
+
+init()
